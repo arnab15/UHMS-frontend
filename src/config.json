@@ -1,0 +1,4 @@
+{
+    "apiEndpoint":"https://healthmonitoringsystem.herokuapp.com/",
+    "imageEndpoint":"http://localhost:5000/"
+}

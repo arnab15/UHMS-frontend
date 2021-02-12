@@ -24,7 +24,7 @@ function AddStudent(props) {
    };
    useEffect(() => {
       getMentors();
-   }, []);
+   }, [authenticatedUser.currentUser]);
    // if (!authenticatedUser.currentUser) return <Redirect to="/" />;
 
    const initialValues = {
@@ -62,13 +62,13 @@ function AddStudent(props) {
       values,
       { setSubmiting, resetForm, setFieldError }
    ) => {
-      console.log(values);
+      // console.log(values);
       const studentDetails = {
          ...values,
          studentId: authenticatedUser.currentUser._id,
       };
       try {
-         const { data } = await createStudentDetails(studentDetails);
+         await createStudentDetails(studentDetails);
          //console.log("Returned data", data);
          resetForm();
          props.history.replace("/dashboard");

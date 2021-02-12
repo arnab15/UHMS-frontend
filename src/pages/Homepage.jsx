@@ -1,5 +1,6 @@
 import React from "react";
 import heroImg from "../assets/img/socialdistance.png";
+import Feedback from "../components/FeedBack/Feedback";
 import Footer from "../components/Footer/Footer";
 import Guideline from "../components/GuideLine/Guideline";
 const Homepage = () => {
@@ -9,9 +10,7 @@ const Homepage = () => {
             <div className="container mx-auto flex px-5 py-10 md:flex-row flex-col items-center">
                <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
                   <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-                     Before they sold out
-                     <br className="hidden lg:inline-block" />
-                     readymade gluten
+                     Welcome To UHMS
                   </h1>
                   <p className="mb-8 leading-relaxed">
                      Copper mug try-hard pitchfork pour-over freegan heirloom
@@ -44,6 +43,16 @@ const Homepage = () => {
             </p>
             <Guideline />
          </section>
+         <div className="py-3">
+            <h1 className="text-center text-3xl text-gray-800 py-3">
+               Give US Your Feedbacks
+            </h1>
+            <p className="text-center text-gray-700">
+               If you find any issue or Bug Please provides us a valuable
+               feedback
+            </p>
+            <Feedback />
+         </div>
          <Footer />
       </>
    );

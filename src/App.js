@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import Homepage from "./pages/Homepage";
 import Navbar from "./components/NavBar/NavBar";
 import LoginPage from "./pages/Login";
-import SignupPage from "./pages/Signup";
+import SignupPage from "./components/AdminPanel/AddNewMentor/AddNewMentor";
 import { getCurrentUser, deleteItem } from "./services/storageService";
 import "react-toastify/dist/ReactToastify.css";
 import Events from "./pages/Events";
@@ -16,7 +16,8 @@ import AddStudent from "./components/AddStudent/AddStudent";
 import Dashboard from "./pages/Dashboard";
 import YourRecord from "./pages/YourRecord";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import SignUPPage from "./pages/Signup";
+import SignUPPage from "./components/AdminPanel/AddNewMentor/AddNewMentor";
+import Admin from "./pages/Admin";
 
 function App() {
    const [currentUser, setUser] = useState({});
@@ -25,12 +26,14 @@ function App() {
    };
    useEffect(() => {
       const user = getCurrentUser();
+      setCurrentUser();
       setUser(user);
       // console.log(user);
+      return () => setCurrentUser({});
    }, []);
    const logoutUser = () => {
       deleteItem();
-      setCurrentUser(null);
+      setCurrentUser({});
    };
 
    return (
@@ -56,6 +59,7 @@ function App() {
                />
                <Route exact path="/allentries" component={Events} />
                <Route exact path="/signup" component={SignUPPage} />
+               <Route path="/admin" component={Admin} />
                <Route path="/" component={Homepage} />
             </Switch>
          </UserContext.Provider>

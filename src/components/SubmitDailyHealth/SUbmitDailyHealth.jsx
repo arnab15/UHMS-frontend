@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import CustomSelect from "../CustomSelect/Select";
 import { symptoms } from "./symptoms";
 

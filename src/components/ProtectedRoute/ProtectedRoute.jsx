@@ -9,7 +9,7 @@ function ProtectedRoute({ path, component: Component, render, ...rest }) {
          {...rest}
          path={path}
          render={(props) => {
-            console.log(props);
+            // console.log(props);
             if (!currentUser) {
                return <Redirect to="/auth" />;
             }

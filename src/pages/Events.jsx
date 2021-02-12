@@ -26,7 +26,6 @@ const Events = () => {
          {(props) => {
             const {
                values,
-               isValidating,
                errors,
                handleChange,
                handleBlur,

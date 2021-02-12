@@ -63,6 +63,7 @@ function Dashboard(props) {
       const isNignt = time >= 18 && time < 22;
       const isValidTime = isDay || isNignt ? true : false;
       setHidden(!isValidTime);
+      return () => {};
    }, [selectedValue, currentTime]);
 
    function currentTimeInHourMin() {
@@ -115,6 +116,7 @@ function Dashboard(props) {
             }
 
             console.log("Form Submited");
+            props.history.replace("/yourrecords");
          } catch (error) {
             if (error.response && error.response.status >= 400) {
                setHidden(false);
@@ -135,7 +137,7 @@ function Dashboard(props) {
          {student && !student.detailsSubmitted ? (
             <Redirect to="/adddetails" />
          ) : (
-            <div className="md:max-w-sm md:mx-auto">
+            <div className="md:max-w-sm md:mx-auto p-3">
                <DashBoardHeader currentDay={currentDay} />
                <MentorDetails student={student} />
                <SUbmitDailyHealth

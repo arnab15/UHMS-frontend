@@ -90,6 +90,15 @@ export default function Navbar() {
                                  </li>
                               </>
                            ) : null}
+                           {authenticatedUser.currentUser.role === "admin" ? (
+                              <li className="nav-item">
+                                 <Link
+                                    className="px-3 py-2 flex items-center text-xs  uppercase font-bold leading-snug text-white hover:opacity-75"
+                                    to="/admin">
+                                    <span className="ml-2">Admin Panel</span>
+                                 </Link>
+                              </li>
+                           ) : null}
                            <li className="nav-item">
                               <Link
                                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"

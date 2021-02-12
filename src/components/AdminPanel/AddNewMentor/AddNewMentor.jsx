@@ -1,12 +1,11 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { signup } from "../services/authService";
-import { setItem } from "../services/storageService";
+import { addNewMentor } from "../../../services/mentorService";
+import Input from "../../Input/Input";
+import { withRouter } from "react-router-dom";
 
-import Input from "../components/Input/Input";
-
-function SignUPPage(props) {
+function AddNewMentor(props) {
    const initialValues = {
       name: "",
       email: "",
@@ -36,15 +35,21 @@ function SignUPPage(props) {
       values,
       { setSubmiting, resetForm, setFieldError }
    ) => {
-      const { name, email, password, confirmPassword } = values;
+      const { name, email, password, confirmPassword, mobileNumber } = values;
       if (password !== confirmPassword)
          return console.log("password not matched");
 
       try {
-         //  const response = await signup(name, email, password);
-         console.log(values);
-
-         resetForm();
+         const { data } = await addNewMentor({
+            name,
+            email,
+            password,
+            mobileNumber,
+         });
+         if (data.message) {
+            props.history.replace("/admin/viewmentors");
+            resetForm();
+         }
       } catch (error) {
          if (error.response && error.response.status === 400) {
             setFieldError("email", error.response.data.error.message);
@@ -138,4 +143,4 @@ function SignUPPage(props) {
    );
 }
 
-export default SignUPPage;
+export default withRouter(AddNewMentor);
